@@ -33,8 +33,20 @@ export class CartService {
   }
 
   removeFromCart(productId: string): void {
-    this.cartItems = this.cartItems.filter(item => item.id !== productId);
-    this.utilSvc.setElementInLocalStorage('cartProducts', this.cartItems);
+    const itemIndex = this.cartItems.findIndex(item => item.id === productId);
+  
+    if (itemIndex !== -1) {
+      const item = this.cartItems[itemIndex];
+  
+      if (item.quantity > 1) {
+        item.quantity -= 1;
+      } else {
+        this.cartItems.splice(itemIndex, 1); // Eliminamos el producto del array
+      }
+      
+      // Guardar el array del carrito actualizado en el localStorage
+      this.utilSvc.setElementInLocalStorage('cartProducts', this.cartItems);
+    }
   }
 
 }

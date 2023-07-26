@@ -40,13 +40,12 @@
                     </p>
                   </div>
                   <div class="ion-text-center">
-                    <p>Precio: {{ calculateDiscount(product) }}$</p>
+                    <p>Precio: {{ calculateTotalPriceWithDiscount(product) }}$</p>
                   </div>
-                  <div class="ion-text-center">
-                    <button (click)="deleteCartProduct(product)" class="cart-button">
-                      <ion-icon name="trash-outline" class="trash-icon"></ion-icon>
-                      <span class="cart-label">Eliminar del carrito</span>
-                    </button>
+                  <div class="quantity-container">
+                    <button (click)="decreaseQuantity(product)" class="quantity-button">-</button>
+                    <span class="product-quantity">{{ product.quantity }}</span>
+                    <button (click)="increaseQuantity(product)" class="quantity-button">+</button>
                   </div>
                 </ion-col>
               </ion-row>

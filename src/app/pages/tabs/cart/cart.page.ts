@@ -20,15 +20,52 @@ export class CartPage implements OnInit {
     this.cartProducts = this.cartSvc.getCartItems();
   }
 
-  calculateDiscount(product: CartProduct): number {
+  calculateTotalPriceWithDiscount(product: CartProduct): number {
     if (product.discount > 0) {
       // Calcula el precio con descuento aplicando el porcentaje de descuento
-      const discountedPrice =
-        product.price - product.price * (product.discount / 100);
-      return discountedPrice;
+      const discountedPrice = product.price - product.price * (product.discount / 100);
+  
+      // Calcula el precio total con descuento tomando en cuenta la cantidad de productos en el carrito
+      const totalPriceWithDiscount = discountedPrice * product.quantity;
+  
+      return totalPriceWithDiscount;
     } else {
-      return product.price;
+      // Si no hay descuento, simplemente devuelve el precio sin cambios
+      return product.price * product.quantity;
     }
+  }
+
+  confirmDeleteProduct(product: CartProduct) {
+    this.utilSvc.presentAlert({
+      header: 'Eliminar',
+      message: '¿Quieres eliminar este producto de tu carrito?',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        }, {
+          text: 'Si, eliminar',
+          handler: () => {
+            this.deleteCartProduct(product);
+          }
+        }
+      ]
+    })
+  }
+
+  decreaseQuantity(product: CartProduct) {
+    if(product.quantity > 1) {
+      this.cartSvc.removeFromCart(product.id);
+    } else {
+      this.confirmDeleteProduct(product)
+    }
+    this.getCartProducts();
+  }
+
+  increaseQuantity(product: CartProduct) {
+    this.cartSvc.addToCart(product);
+    this.getCartProducts();
   }
 
   deleteCartProduct(product: CartProduct) {
