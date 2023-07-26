@@ -40,12 +40,26 @@
                     </p>
                   </div>
                   <div class="ion-text-center">
-                    <p>Precio: {{ calculateTotalPriceWithDiscount(product) }}$</p>
+                    <p>
+                      Precio: {{ calculateTotalPriceWithDiscount(product) }}$
+                    </p>
                   </div>
                   <div class="quantity-container">
-                    <button (click)="decreaseQuantity(product)" class="quantity-button">-</button>
+                    <ion-button
+                      (click)="decreaseQuantity(product)"
+                      mode="ios"
+                      class="product-btn"
+                      size="small"
+                      >-</ion-button
+                    >
                     <span class="product-quantity">{{ product.quantity }}</span>
-                    <button (click)="increaseQuantity(product)" class="quantity-button">+</button>
+                    <ion-button
+                      (click)="increaseQuantity(product)"
+                      mode="ios"
+                      class="product-btn"
+                      size="small"
+                      >+</ion-button
+                    >
                   </div>
                 </ion-col>
               </ion-row>
@@ -54,7 +68,10 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <div *ngIf="cartProducts.length === 0" class="ion-text-center empty-cart-message">
+    <div
+      *ngIf="cartProducts.length === 0"
+      class="ion-text-center empty-cart-message"
+    >
       <ion-icon name="cart-outline" class="empty-cart-icon"></ion-icon>
       <p>¡Tu carrito de compras está vacío!</p>
     </div>

@@ -1,7 +1,12 @@
 <ion-content>
   <app-header title="Inicio"></app-header>
   <div class="content">
-    <ion-button (click)="addOrUpdateProduct()" mode="ios" class="ion-margin">
+    <ion-button
+      (click)="addOrUpdateProduct()"
+      mode="ios"
+      class="ion-margin"
+      *ngIf="isAdmin"
+    >
       Agregar producto
       <ion-icon slot="end" name="add-circle-outline"></ion-icon>
     </ion-button>
@@ -47,10 +52,18 @@
                     <p>Precio: {{ calculateDiscount(product) }}$</p>
                   </div>
                   <div class="ion-text-center">
-                    <button (click)="addToCart(product)" class="cart-button">
-                      <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
-                      <span class="cart-label">Agregar al carrito</span>
-                    </button>
+                    <ion-button
+                      (click)="addToCart(product)"
+                      mode="ios"
+                      class="product-btn"
+                      size="big"
+                    >
+                    Agregar al carrito
+                      <ion-icon
+                        name="cart-outline"
+                        class="cart-icon"
+                      ></ion-icon>
+                    </ion-button>
                   </div>
                   <div class="ion-text-center">
                     <ion-button
