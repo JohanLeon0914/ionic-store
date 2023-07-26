@@ -1,0 +1,86 @@
+<ion-content color="light">
+  <app-header
+    color="light"
+    [centerTitle]="true"
+    [isModal]="true"
+    [title]="product ? 'Producto': 'Nuevo Producto'"    
+  ></app-header>
+
+  <app-custom-input
+    [control]="form.controls.name"
+    type="text"
+    label="Nombre"
+  ></app-custom-input>
+  <div *ngIf="form.controls.name.errors && form.controls.name.dirty">
+    <div class="validators" *ngIf="form.controls.name.errors?.['required']">
+      Este campo es requerido
+    </div>
+    <div class="validators" *ngIf="form.controls.name.errors?.['minlength']">
+      Este campo requiere al menos 4 caracteres
+    </div>
+  </div>
+
+  <app-custom-input
+    [control]="form.controls.description"
+    type="textarea"
+    label="Descripción"
+  ></app-custom-input>
+  <div
+    *ngIf="form.controls.description.errors && form.controls.description.dirty"
+  >
+    <div
+      class="validators"
+      *ngIf="form.controls.description.errors?.['required']"
+    >
+      Este campo es requerido
+    </div>
+    <div
+      class="validators"
+      *ngIf="form.controls.description.errors?.['minlength']"
+    >
+      Este campo requiere al menos 4 caracteres
+    </div>
+  </div>
+
+  <app-custom-input
+    [control]="form.controls.image"
+    type="text"
+    label="Imagen"
+  ></app-custom-input>
+  <div *ngIf="form.controls.name.errors && form.controls.name.dirty">
+    <div class="validators" *ngIf="form.controls.name.errors?.['required']">
+      Este campo es requerido
+    </div>
+    <div class="validators" *ngIf="form.controls.name.errors?.['minlength']">
+      Este campo requiere al menos 4 caracteres
+    </div>
+  </div>
+
+  <app-custom-input
+    [control]="form.controls.price"
+    type="number"
+    label="Precio"
+  ></app-custom-input>
+  <div *ngIf="form.controls.price.errors && form.controls.price.dirty">
+    <div class="validators" *ngIf="form.controls.name.errors?.['required']">
+      Este campo es requerido
+    </div>
+  </div>
+
+  <app-custom-input
+    [control]="form.controls.discount"
+    type="number"
+    label="Descuento"
+  ></app-custom-input>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="ion-text-center">
+      <ion-button class="ion-margin" mode="ios" [disabled]="form.invalid" (click)="submit()" shape="round">
+        {{ product ? 'Guardar Cambios': 'Crear Producto' }}       
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

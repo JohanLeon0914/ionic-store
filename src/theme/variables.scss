@@ -233,4 +233,9 @@
 
     --ion-card-background: #1e1e1e;
   }
+  ion-content {
+    --background: var(--ion-color-primary);
+    --color: var(--ion-color-primary-contrast);
+}
+
 }

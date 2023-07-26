@@ -1,0 +1,35 @@
+.discount-label {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+
+  /* Estilos para el botón del carrito de compras */
+  .cart-button {
+    display: flex; /* Añade Flexbox para centrar el contenido verticalmente */
+    align-items: center; /* Centra verticalmente el contenido del botón */
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .cart-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos para el icono del carrito de compras */
+  .cart-icon {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  
+  /* Estilos para la etiqueta del botón */
+  .cart-label {
+    font-size: 16px;
+  }

@@ -1,0 +1,24 @@
+<ion-content>
+  <app-header title="Perfil"></app-header>
+  <div class="content ion-text-center">
+    <div *ngIf="user" class="avatar-container">
+      <div class="avatar-wrapper">
+        <ion-avatar class="avatar">
+          <img [src]="user?.photoURL">
+        </ion-avatar>
+      </div>
+    </div>
+    <h2>{{ user?.displayName }}</h2>
+    <div>{{ user?.email }}</div>
+
+    <ion-button *ngIf="!user" (click)="loginWithGoogle()" shape="round">
+      Iniciar sesión con Google
+      <ion-icon slot="end" name="logo-google"></ion-icon>
+    </ion-button>
+
+    <ion-button *ngIf="user" (click)="signOut()" shape="round">
+      Cerrar Sesión
+      <ion-icon slot="end" name="log-out-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,12 @@
+<!-- Input regular -->
+<ion-item *ngIf="type !== 'textarea'" class="ion-margin-vertical">
+  <ion-icon color="primary" *ngIf="icon" slot="start" [name]="icon"></ion-icon>
+  <ion-label position="floating">{{ label }}</ion-label>
+  <!-- debounce hace que no se valide lo que se escriba en el input hasta en este caso 500 milisegundos despues -->
+  <ion-input debounce="500" [autocomplete]="autocomplete" [type]="type" [formControl]="control"> </ion-input>
+</ion-item>
+<!-- Textarea -->
+<ion-item *ngIf="type === 'textarea'" class="ion-margin-vertical"> 
+  <ion-label position="floating">{{ label }}</ion-label>
+  <ion-textarea auto-grow="true" [formControl]="control" debounce="500"></ion-textarea>
+</ion-item>
