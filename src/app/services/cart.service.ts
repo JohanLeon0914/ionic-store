@@ -49,4 +49,9 @@ export class CartService {
     }
   }
 
+  cleanCart() {
+    this.cartItems = [];
+    this.utilSvc.setElementInLocalStorage('cartProducts', this.cartItems);
+  }
+
 }

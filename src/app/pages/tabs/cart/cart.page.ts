@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartProduct } from 'src/app/model/cartProduct.model';
 import { CartService } from 'src/app/services/cart.service';
 import { UtilService } from 'src/app/services/util.service';
+import { BillComponent } from 'src/app/shared/components/bill/bill.component';
 
 @Component({
   selector: 'app-cart',
@@ -32,6 +33,17 @@ export class CartPage implements OnInit {
     } else {
       // Si no hay descuento, simplemente devuelve el precio sin cambios
       return product.price * product.quantity;
+    }
+  }
+
+  async openModalBuyProducts() {
+    let res = await this.utilSvc.presentModal({
+      component: BillComponent,
+      cssClass: 'add-update-modal',
+    });
+    //al cerrar el modal, este puede enviarnos una respuesta, la cual se esta enviando desde el componente addUpdateProduct llamada success, si la tiene, actualizamos la lista de tareas
+    if (res && res.success) {
+      this.getCartProducts();
     }
   }
 

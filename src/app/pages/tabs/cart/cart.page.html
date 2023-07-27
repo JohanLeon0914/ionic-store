@@ -68,6 +68,16 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <div class="ion-text-center" *ngIf="cartProducts.length">
+      <ion-button 
+        (click)="openModalBuyProducts()"
+        mode="ios" 
+        size="big"
+        color="success"
+        >
+        Comprar
+      </ion-button>
+    </div>
     <div
       *ngIf="cartProducts.length === 0"
       class="ion-text-center empty-cart-message"

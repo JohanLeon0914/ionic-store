@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AddUpdateProductComponent } from './components/add-update-product/add-update-product.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
+import { BillComponent } from './components/bill/bill.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
     LogoComponent,
     AddUpdateProductComponent,
     CustomInputComponent,
+    BillComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { CustomInputComponent } from './components/custom-input/custom-input.com
     LogoComponent,
     AddUpdateProductComponent,
     CustomInputComponent,
+    BillComponent,
   ]
 })
 export class SharedModule { }

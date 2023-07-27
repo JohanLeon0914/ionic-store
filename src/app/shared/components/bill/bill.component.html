@@ -1,0 +1,27 @@
+<ion-content color="light">
+  <app-header
+    color="light"
+    [centerTitle]="true"
+    [isModal]="true"
+    title="Factura"    
+  ></app-header>
+
+  <div class="invoice-container ion-text-center">
+    <div class="invoice-items">
+      <div class="item" *ngFor="let product of cartProducts">
+        <div class="item-details">
+          <span class="item-name">Producto: {{ product.name }}</span>
+          <span class="item-quantity">x{{ product.quantity }}:</span>
+        </div>
+        <span class="item-price">{{ calculateTotalPriceWithDiscount(product) }}</span>
+      </div>
+    </div>
+    <hr />
+    <div class="total-price">
+      <span>Total de la factura: </span>
+      <span class="total-amount">{{ calculateTotalPriceOfBill() }}</span>
+    </div>
+    <ion-button (click)="buyProducts()" mode="ios" size="big" color="success">Comprar</ion-button>
+  </div>
+
+</ion-content>
