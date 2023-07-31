@@ -1,6 +1,7 @@
 <ion-content>
   <app-header title="Inicio"></app-header>
   <div class="content">
+      <ion-searchbar animated="true" placeholder="Buscar producto..." show-clear-button="focus" (ionInput)="searchProduct($event)"></ion-searchbar>
     <ion-button
       (click)="addOrUpdateProduct()"
       mode="ios"

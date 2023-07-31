@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
 
   loading: boolean = false;
   isAdmin: boolean = false;
+  search: string = '';
 
   products: Product[] = [];
 
@@ -36,13 +37,28 @@ export class HomePage implements OnInit {
     this.getTasks();
   }
 
+  searchProduct(event) {
+    this.search = event.target.value;
+    this.getTasks();
+  }
+  
+
   getTasks() {
     this.loading = true;
-
+  
     let sub = this.firebaseSvc.getCollection('products').subscribe({
       next: (res: Product[]) => {
-        this.products = res;
-        console.log(res);
+        if (this.search) {
+          // Aplicar el filtro para obtener solo los productos que coincidan con la búsqueda
+          this.products = res.filter((product: Product) => {
+            // Aquí debes ajustar el criterio de búsqueda según la estructura de tus objetos Product
+            return product.name.toLowerCase().includes(this.search.toLowerCase());
+          });
+        } else {
+          // Si no hay término de búsqueda, asignar todos los productos sin filtrar
+          this.products = res;
+        }
+        
         sub.unsubscribe();
         this.loading = false;
       },
