@@ -80,7 +80,7 @@
       </ion-button>
     </div>
     <div
-      *ngIf="cartProducts.length === 0"
+      *ngIf="!cartProducts.length"
       class="ion-text-center empty-cart-message"
     >
       <ion-icon name="cart-outline" class="empty-cart-icon"></ion-icon>

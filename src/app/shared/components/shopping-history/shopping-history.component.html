@@ -1,7 +1,7 @@
 <ion-content color="light">
   <app-header color="light" [centerTitle]="true" [isModal]="true" title="Historial de compras"></app-header>
 
-  <div class="invoice-container ion-text-center">
+  <div class="invoice-container ion-text-center" *ngIf="bills.length">
     <div class="item" *ngFor="let bill of bills; let i = index">
       <b> Factura {{ i + 1 }}: </b>
       <div *ngFor="let product of bill.cart">
@@ -15,5 +15,13 @@
       </div>
     </div>
   </div>
+
+  <div
+      *ngIf="!bills.length"
+      class="ion-text-center empty-bill-message"
+    >
+    <ion-icon name="receipt-outline" class="empty-bill-icon"></ion-icon>
+      <p>¡Aun no has realizado ninguna compra!</p>
+    </div>
 
 </ion-content>
