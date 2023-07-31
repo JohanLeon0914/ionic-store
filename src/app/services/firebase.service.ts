@@ -82,6 +82,10 @@ export class FirebaseService {
     return this.db.collection(collectionName).valueChanges({ idField: 'id' });
   }
 
+  getCollectionWhere(collectionName: string, where: string, whereValue: any): Observable<any[]> {
+    return this.db.collection(collectionName, ref => ref.where(where, '==', whereValue)).valueChanges({ idField: 'id' });
+  }
+
   // Método para agregar un documento a una colección en lugar de una subcolección
   addDocument(collectionName: string, object: any) {
     return this.db.collection(collectionName).add(object);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilService } from 'src/app/services/util.service';
 import { User } from 'firebase/auth';
+import { ShoppingHistoryComponent } from 'src/app/shared/components/shopping-history/shopping-history.component';
 
 @Component({
   selector: 'app-profile',
@@ -26,6 +27,17 @@ export class ProfilePage implements OnInit {
     this.firebaseSvc.isAdmin().subscribe(isAdmin => {
       this.isAdmin = isAdmin;
     });
+  }
+
+  async openModalSeeShoppingHistory() {
+    let res = await this.utilSvc.presentModal({
+      component: ShoppingHistoryComponent,
+      cssClass: 'add-update-modal',
+    });
+    //al cerrar el modal, este puede enviarnos una respuesta, la cual se esta enviando desde el componente addUpdateProduct llamada success, si la tiene, actualizamos la lista de tareas
+    // if (res && res.success) {
+    //   this.getCartProducts();
+    // }
   }
 
   getUser() {

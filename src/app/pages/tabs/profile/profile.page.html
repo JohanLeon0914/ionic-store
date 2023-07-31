@@ -16,7 +16,12 @@
       <ion-icon slot="end" name="logo-google"></ion-icon>
     </ion-button>
 
-    <ion-button *ngIf="user" (click)="signOut()" shape="round">
+    <ion-button *ngIf="user" (click)="openModalSeeShoppingHistory()" shape="round">
+      Compras
+      <ion-icon slot="end" name="archive-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button *ngIf="user" (click)="signOut()" color="danger" shape="round">
       Cerrar Sesión
       <ion-icon slot="end" name="log-out-outline"></ion-icon>
     </ion-button>

@@ -8,6 +8,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { AddUpdateProductComponent } from './components/add-update-product/add-update-product.component';
 import { CustomInputComponent } from './components/custom-input/custom-input.component';
 import { BillComponent } from './components/bill/bill.component';
+import { ShoppingHistoryComponent } from './components/shopping-history/shopping-history.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BillComponent } from './components/bill/bill.component';
     AddUpdateProductComponent,
     CustomInputComponent,
     BillComponent,
+    ShoppingHistoryComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { BillComponent } from './components/bill/bill.component';
     AddUpdateProductComponent,
     CustomInputComponent,
     BillComponent,
+    ShoppingHistoryComponent,
   ]
 })
 export class SharedModule { }

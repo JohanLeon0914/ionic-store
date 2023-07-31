@@ -11,14 +11,27 @@ import { BillComponent } from 'src/app/shared/components/bill/bill.component';
 })
 export class CartPage implements OnInit {
   cartProducts: CartProduct[] = [];
+  search: string = '';
   constructor(private cartSvc: CartService, private utilSvc: UtilService) {}
 
   ngOnInit() {
     this.getCartProducts();
   }
 
+  searchProduct(event) {
+    this.search = event.target.value;
+    this.getCartProducts();
+  }
+
   getCartProducts() {
-    this.cartProducts = this.cartSvc.getCartItems();
+    if(this.search) {
+      this.cartProducts = this.cartSvc.getCartItems().filter((product: CartProduct) => {
+        return product.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    } else {
+      this.cartProducts = this.cartSvc.getCartItems();
+    }
+    
   }
 
   calculateTotalPriceWithDiscount(product: CartProduct): number {

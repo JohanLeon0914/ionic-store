@@ -1,0 +1,41 @@
+.invoice-container {
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+    color: black;
+  }
+
+  .item {
+    margin-bottom: 20px;
+  }
+
+  .item:nth-child(even) {
+    background-color: #e7dddd;
+  }
+
+  .item div {
+    margin-bottom: 5px;
+  }
+
+  .item span {
+    display: block;
+  }
+
+  .total-amount {
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .highlight-price {
+    color: #0056b3;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-bottom: 5px;
+  }
+

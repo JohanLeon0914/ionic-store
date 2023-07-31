@@ -1,0 +1,19 @@
+<ion-content color="light">
+  <app-header color="light" [centerTitle]="true" [isModal]="true" title="Historial de compras"></app-header>
+
+  <div class="invoice-container ion-text-center">
+    <div class="item" *ngFor="let bill of bills; let i = index">
+      <b> Factura {{ i + 1 }}: </b>
+      <div *ngFor="let product of bill.cart">
+        {{ product.name }}<b> x{{ product.quantity }}:</b> <span class="highlight-price">{{
+          calculateTotalPriceWithDiscount(product) }}$</span>
+      </div>
+      <hr />
+      <div class="total-price">
+        <span> <b>Total de la factura {{ i + 1 }}: </b></span>
+        <span class="total-amount">{{ calculateTotalPriceOfBill(bill.cart) }}</span>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

@@ -34,12 +34,8 @@ export class BillComponent implements OnInit {
   }
 
   buyProducts() {
-    let bill: Bill = {
-      userEmail: this.user.email,
-      cart: this.cartProducts
-    }
     this.utilSvc.presentLoading();
-    this.firebaseSvc.addDocument('bills', bill).then(
+    this.firebaseSvc.addDocument('bills', { userEmail: this.user.email, cart: this.cartProducts}).then(
       (res) => {
         this.utilSvc.dismissModal({ success: true });
         this.utilSvc.presentToast({
